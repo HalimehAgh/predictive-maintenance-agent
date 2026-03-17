@@ -1,0 +1,30 @@
+# Core orchestration
+langgraph
+langchain
+langchain-openai
+
+# Multi-agent frameworks
+autogen-agentchat
+autogen-ext[openai]
+crewai
+crewai-tools[mcp]
+openai-agents
+
+# MCP
+mcp
+
+# Observability
+langfuse
+
+# Data science
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+
+# Utilities
+python-dotenv
+pydantic
+jupyter
+ipykernel

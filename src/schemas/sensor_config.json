@@ -1,0 +1,60 @@
+{
+  "useful_sensors": [
+    "sensor_15",
+    "sensor_8",
+    "sensor_13",
+    "sensor_21",
+    "sensor_20",
+    "sensor_11",
+    "sensor_2",
+    "sensor_12",
+    "sensor_7",
+    "sensor_17",
+    "sensor_3",
+    "sensor_4",
+    "sensor_14",
+    "sensor_9"
+  ],
+  "constant_sensors": [
+    "sensor_1",
+    "sensor_10",
+    "sensor_19",
+    "sensor_18",
+    "sensor_16",
+    "sensor_5",
+    "sensor_6"
+  ],
+  "degradation_sensors": {
+    "rising": [
+      "sensor_15",
+      "sensor_8",
+      "sensor_13",
+      "sensor_11",
+      "sensor_2",
+      "sensor_17",
+      "sensor_3",
+      "sensor_4",
+      "sensor_14",
+      "sensor_9"
+    ],
+    "falling": [
+      "sensor_21",
+      "sensor_20",
+      "sensor_7",
+      "sensor_12"
+    ]
+  },
+  "rul_thresholds": {
+    "healthy_above": 80,
+    "warning_above": 30,
+    "critical_below": 30
+  },
+  "dataset": {
+    "name": "FD001",
+    "engines": 100,
+    "conditions": 1,
+    "fault_modes": [
+      "HPC Degradation"
+    ]
+  }
+}

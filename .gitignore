@@ -1,0 +1,28 @@
+# Environment
+.env
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Data
+data/train_FD001.txt
+data/test_FD001.txt
+data/RUL_FD001.txt
+
+# Keep manuals
+!data/manuals/
+
+# OS
+.DS_Store
+
+# IDE
+.vscode/
+.cursor/
+
+# Logs
+*.log
