@@ -6,30 +6,30 @@ and predictive maintenance, built on NASA CMAPSS dataset.
 ## Architecture Diagram
 ```mermaid
 flowchart TD
-    A[📥 Sensor Input\nEngine ID + Cycle + Readings] --> B
+    A[Sensor Input\nEngine ID + Cycle + Readings] --> B
 
-    subgraph LangGraph Pipeline
-        B[Node 1: Input Validator\nGuardrail — check all 14 sensors present] -->|valid| C
+    subgraph Pipeline[LangGraph Pipeline]
+        B[Node 1: Input Validator\nGuardrail] -->|valid| C
         B -->|invalid| F
-        
-        C[Node 2: Anomaly Detector\nOpenAI Agents SDK\nStatistical pre-filter + LLM reasoning\nStructured Pydantic output] --> D
-        
-        D[Node 3: Diagnosis Debate\nAutoGen RoundRobinGroupChat\nMechanical Agent vs Electrical Agent\nJudge Agent → verdict] --> E
-        
-        E[Node 4: Knowledge Crew\nCrewAI Sequential Process\nResearcher via Filesystem MCP + Brave Search MCP\nRisk Assessor + Report Writer] --> G
-        
-        G[Node 5: Guardrail Check\nRUL-based safety enforcement\nForce CRITICAL alert if RUL < 30] --> F
-        
+
+        C[Node 2: Anomaly Detector\nOpenAI Agents SDK\nStatistical pre-filter + LLM reasoning] --> D
+
+        D[Node 3: Diagnosis Debate\nAutoGen\nMechanical vs Electrical vs Judge] --> E
+
+        E[Node 4: Knowledge Crew\nCrewAI + Filesystem MCP + Brave Search MCP\nResearcher + Risk Assessor + Report Writer] --> G
+
+        G[Node 5: Guardrail Check\nRUL-based safety enforcement] --> F
+
         F[Node 6: Report Generator\nStructured Markdown report]
     end
 
-    F --> H[📤 Operator Alert\n🔴 CRITICAL / 🟡 WARNING / 🟢 HEALTHY\n+ Full Maintenance Report]
+    F --> H[Operator Alert\nCRITICAL / WARNING / HEALTHY\n+ Maintenance Report]
 
-    subgraph Observability
-        I[Langfuse\nFull pipeline tracing\nPer-node latency\nAgent transcripts]
+    subgraph Obs[Observability]
+        I[Langfuse\nFull pipeline tracing]
     end
 
-    LangGraph Pipeline -.->|traces| I
+    Pipeline -.->|traces| Obs
 ```
 
 ## Frameworks & Tools
