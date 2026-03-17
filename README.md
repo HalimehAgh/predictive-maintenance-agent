@@ -6,27 +6,27 @@ and predictive maintenance, built on NASA CMAPSS dataset.
 ## Architecture Diagram
 ```mermaid
 flowchart TD
-    A[Sensor Input\nEngine ID + Cycle + Readings] --> B
+    A[Sensor Input] --> B
 
     subgraph Pipeline[LangGraph Pipeline]
-        B[Node 1: Input Validator\nGuardrail] -->|valid| C
+        B[Node 1: Input Validator] -->|valid| C
         B -->|invalid| F
 
-        C[Node 2: Anomaly Detector\nOpenAI Agents SDK\nStatistical pre-filter + LLM reasoning] --> D
+        C[Node 2: Anomaly Detector\nOpenAI Agents SDK\nStatistical + LLM hybrid] --> D
 
         D[Node 3: Diagnosis Debate\nAutoGen\nMechanical vs Electrical vs Judge] --> E
 
-        E[Node 4: Knowledge Crew\nCrewAI + Filesystem MCP + Brave Search MCP\nResearcher + Risk Assessor + Report Writer] --> G
+        E[Node 4: Knowledge Crew\nCrewAI\nFilesystem MCP + Brave Search MCP] --> G
 
-        G[Node 5: Guardrail Check\nRUL-based safety enforcement] --> F
+        G[Node 5: Guardrail Check\nRUL threshold enforcement] --> F
 
-        F[Node 6: Report Generator\nStructured Markdown report]
+        F[Node 6: Report Generator]
     end
 
-    F --> H[Operator Alert\nCRITICAL / WARNING / HEALTHY\n+ Maintenance Report]
+    F --> H[Operator Alert\nCRITICAL / WARNING / HEALTHY]
 
     subgraph Obs[Observability]
-        I[Langfuse\nFull pipeline tracing]
+        I[Langfuse Tracing]
     end
 
     Pipeline -.->|traces| Obs
