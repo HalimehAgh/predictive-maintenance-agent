@@ -11,19 +11,14 @@ flowchart TD
     subgraph Pipeline[LangGraph Pipeline]
         B[Node 1: Input Validator] -->|valid| C
         B -->|invalid| F
-
-        C[Node 2: Anomaly Detector\nOpenAI Agents SDK\nStatistical + LLM hybrid] --> D
-
-        D[Node 3: Diagnosis Debate\nAutoGen\nMechanical vs Electrical vs Judge] --> E
-
-        E[Node 4: Knowledge Crew\nCrewAI\nFilesystem MCP + Brave Search MCP] --> G
-
-        G[Node 5: Guardrail Check\nRUL threshold enforcement] --> F
-
+        C[Node 2: Anomaly Detector - OpenAI Agents SDK] --> D
+        D[Node 3: Diagnosis Debate - AutoGen] --> E
+        E[Node 4: Knowledge Crew - CrewAI + MCP] --> G
+        G[Node 5: Guardrail Check] --> F
         F[Node 6: Report Generator]
     end
 
-    F --> H[Operator Alert\nCRITICAL / WARNING / HEALTHY]
+    F --> H[Operator Alert - CRITICAL / WARNING / HEALTHY]
 
     subgraph Obs[Observability]
         I[Langfuse Tracing]
